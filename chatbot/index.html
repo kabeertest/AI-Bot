@@ -1,0 +1,65 @@
+<html ng-app="chatApp">
+
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.15.1.min.js"></script>   
+	<script src="js/angular.min.js"></script>
+	<script src="js/SpeechRecognitionDirective.js"></script>
+	
+    <script src="https://cdn.pubnub.com/sdk/pubnub-angular/pubnub-angular-3.2.1.min.js"></script>    
+	<script src="js/script.js"></script>
+	<script>
+
+</script>
+	<link rel="stylesheet" href="css/style.css">
+
+	<body ng-controller="chatController">
+		<script src="https://use.fontawesome.com/45e03a14ce.js"></script>
+		<div class="main_section" >
+			<div class="container">
+				<div class="chat_container row">
+					<div class="col-sm-6 message_section">
+						<div class="row">
+							<div class="new_message_head">
+							</div>							
+							<div class="chat_area">
+								<ul class="list-unstyled">
+									<li class="left clearfix" ng-repeat="chat  in chatData">
+										<span class="chat-img1 pulleft" ng-class="{pullright: chat.isMe }">
+                     <img src="img/no-image.png" alt="User Avatar" class="img-circle">
+                     </span>
+										<div class="chat-body1 clearfix">
+											<p ng-if="chat.type == 'message'"> {{chat.messages}}</p>																					
+										</div>
+									</li>
+
+
+								</ul>
+								<a id="bottom"></a>
+							</div>
+							<!--chat_area-->
+							<div class="message_write">
+								<form class=" ">
+									<div class="row col">										 
+											<input  class="form-control col-10" type="text" value=" " ng-keyup="$event.keyCode == 13 && postIt()" ng-model="chatInput" id="example-text-input">
+											<button type="button" ng-click="postIt()" class="btn btn-success"><i class="fa fa-sign-in" aria-hidden="true"></i></button>										 																				 
+									</div>
+								</form>
+							</div>
+							<!--message_section-->
+						
+						</div>
+					</div>
+					<div class="col-sm-3" ng-speech-recognition-start="startTalk()"  ng-speech-recognition-end="endTalk()">
+							<img  class="botIMG"src="img/bot2.gif" alt="User Avatar" class="img-circle">
+							
+							<h5 class="chatBotText">{{botText}}</h5>
+						</div>
+				</div>
+	</body>
+
+</html>
